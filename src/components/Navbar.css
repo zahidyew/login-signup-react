@@ -1,0 +1,66 @@
+ul.navbar, ul.show-menus {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.navbar li {
+  float: left;
+}
+
+ul.navbar li span, ul.show-menus li span {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.navbar li span:hover, ul.show-menus li span:hover {
+  background-color: #111;
+}
+
+#burgerMenu, #mini-navbar {
+  display: none;
+}
+
+#burgerMenu span {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+@media only screen and (max-width: 768px) {
+  ul.navbar li{
+    float: none;
+  }
+
+  #burgerMenu {
+    display: inline;
+    float: right;
+    padding-right: 10px;
+  }
+
+  #burgerMenu span {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  #burgerMenu span:hover {
+    background-color: initial;
+    color: goldenrod;
+    cursor: pointer;
+  }
+
+  .navbar-options {
+    display: none;
+  }
+
+  .show-menus {
+    display: block !important;
+  }
+}

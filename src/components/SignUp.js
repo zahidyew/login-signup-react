@@ -46,6 +46,7 @@ const SignUp = () => {
             password: pass,
             email: email
          });
+         alert("Success");
          //console.log(users);
          history.replace('/signin');
       }

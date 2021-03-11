@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../contexts/UserContext';
+//import { UserContext } from '../contexts/UserContext';
+import Cookies from 'js-cookie';
 
 const Home = () => {
-   const { user, setUser } = useContext(UserContext);
+   //const { user, setUser } = useContext(UserContext);
+   const [username, setUsername] = useState(Cookies.get('username'));
 
    return (
       <>
          <h1> Home </h1>
-         {user === null ? (
+         {username === undefined ? (
             <>
                <p> You're signed out. </p>
                <Link to="/signin"> Sign in </Link> <br />
@@ -16,9 +18,12 @@ const Home = () => {
             </>
          ) : (
             <>
-               <p> Welcome {user.username}!</p>
+               <p> Welcome {username}!</p>
                <button onClick={
-                  () => setUser(null)} >
+                  () => {
+                     Cookies.remove('username');
+                     setUsername(undefined);
+                  }} >
                   Sign out
                </button>
             </>

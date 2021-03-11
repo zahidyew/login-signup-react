@@ -1,11 +1,12 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 import { users } from '../model/Users';
-import { UserContext } from '../contexts/UserContext';
+//import { UserContext } from '../contexts/UserContext';
+import Cookies from 'js-cookie';
 
 const SignIn = () => {
    const history = useHistory();
-   const { user, setUser } = useContext(UserContext);
+   //const { user, setUser } = useContext(UserContext);
 
    const formReducer = (state, event) => {
       return {
@@ -41,7 +42,8 @@ const SignIn = () => {
 
       if (userIndex !== -1) {
          const currentUser = users[userIndex];
-         setUser(currentUser);
+         Cookies.set('username', currentUser.username, { expires: 3 });
+         //setUser(currentUser);
          // replace() instead of push() to prevent user from going back
          history.replace('/');
       } else {
